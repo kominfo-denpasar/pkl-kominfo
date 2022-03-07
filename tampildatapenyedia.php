@@ -22,11 +22,11 @@ include("koneksi.php");
 
     <?php 
     include("koneksi.php");
-    $data = mysqli_query($koneksi,"select * from penyedia");
+    $data = mysqli_query($koneksi,"select * from temp_penyedia");
     $no=1;
     while($d=mysqli_fetch_array($data)){
     ?>
-    <tbody class="tabel3">
+    <tbody class="tabel4">
                                                            
                                                     
     <tr>

@@ -1,7 +1,7 @@
 <?php 
-include 'koneksi.php'
+include 'koneksi.php';
 
- ?>
+?>
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -18,12 +18,12 @@ include 'koneksi.php'
     <meta name="robots" content="noindex,nofollow">
     <title>Admin Kominfo</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x15" href="../assets/images/logodps.png">
+    <link rel="icon" type="image/png" sizes="16x15" href="assets/images/logodps.png">
     <!-- Custom CSS -->
-    <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="assets/extra-libs/c3/c3.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="../dist/css/style.min.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -60,9 +60,10 @@ include 'koneksi.php'
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- insert data barang -->
-    <script type="text/javascript">
+     <script type="text/javascript">
+        
     $(document).ready(function(){
-        $(".add-row").click(function(){
+        $(".add-row-barang").click(function(){
             var data = $(".form-barang").serialize();
             $.ajax({
                 type: 'POST',
@@ -71,14 +72,18 @@ include 'koneksi.php'
                 success: function() {
                     alert('test');
                     $('.tampildata').load("tampildatabarang.php");
+                    //console.log("hai");
                 }
             });
         });
     });
-    </script>
+    </script> 
+
+
+
 
       <!-- hapus data barang -->
-      <script type="text/javascript">
+      <!-- <script type="text/javascript">
 
       var deleteData = function(id){
 
@@ -96,51 +101,14 @@ include 'koneksi.php'
 
     });
 };
- </script>
+ </script> -->
 
-
-
-
-     <!-- insert data tenaga ahli -->
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $(".add-row-tenagaahli").click(function(){
-            var data = $(".form-tenagaahli").serialize();
-            $.ajax({
-                type: 'POST',
-                url: "aksitenagaahli.php",
-                data: data,
-                success: function() {
-                    $('.tampildataahli').load("tampildatatenagaahli.php");
-                }
-            });
-        });
-    });
-    </script>
-
-
-     <!-- insert penyedia kebutuhan barang -->
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $(".add-row-penyedia").click(function(){
-            var data = $(".form-penyedia").serialize();
-            $.ajax({
-                type: 'POST',
-                url: "aksipenyedia.php",
-                data: data,
-                success: function() {
-                    $('.tampildatapenyedia').load("tampildatapenyedia.php");
-                }
-            });
-        });
-    });
-    </script>
 
 
 <!-- ajax untuk menampilkan data barang -->
     <script type="text/javascript">
       $(function(){
-          $(".add-row").click(function(){
+          $(".add-row-barang").click(function(){
         $.ajax({
           url:"tampilrincianperhitungan.php",
           type: "GET",
@@ -150,8 +118,6 @@ include 'koneksi.php'
             var sum=0;
             
             for(var i=0; i<data.length; i++){
-              
-             
             
               sum += parseInt(data[i].harga);
             }
@@ -169,16 +135,16 @@ include 'koneksi.php'
       });
     </script>
 
-    <script>
+     <script>
     $(document).ready(function(){
-        $(".add-row1").click(function(){
-            var nama_barang = $("#nama_barang").val();
-            var volume = $("#volume").val();
-            var satuan = $("#satuan").val();
-            var harga = $("#harga").val();
-            var markup = "<tr><td><input type='checkbox' name='record'> </td> <td>" + nama_barang + "</td> <td>" + volume + "</td> <td>" + satuan + "</td>  <td>" + harga + "</td>  </tr>";
-            $(".tabel1").append(markup);
-        });
+        // $(".add-roww").click(function(){
+        //     var nama_barang = $("#nama_barang").val();
+        //     var volume = $("#volume").val();
+        //     var satuan = $("#satuan").val();
+        //     var harga = $("#harga").val();
+        //     var markup = "<tr><td><input type='checkbox' name='record'> </td> <td>" + nama_barang + "</td> <td>" + volume + "</td> <td>" + satuan + "</td>  <td>" + harga + "</td>  </tr>";
+        //     $(".tabel1").append(markup);
+        // });
         
         // Find and remove selected table rows
         $(".delete-row").click(function(){
@@ -189,30 +155,67 @@ include 'koneksi.php'
             });
         });
     });    
-    </script>
+    </script> 
 
-    <script>
-    $(document).ready(function(){
-        $(".add-row-tenagaahli").click(function(){
-            var nama_ahli = $("#nama_ahli").val();
-            var tugas_ahli = $("#tugas_ahli").val();
-            
-            var markup = "<tr><td><input type='checkbox' name='record'> </td> <td>" + nama_ahli + "</td> <td>" + tugas_ahli + "</td>  </tr>";
-            $(".tabel2").append(markup);
-        });
+ 
+
+<script type="text/javascript">
         
-        // Find and remove selected table rows
-        $(".delete-row").click(function(){
-            $(".tabel2").find('input[name="record"]').each(function(){
-                if($(this).is(":checked")){
-                    $(this).parents("tr").remove();
-                }
+        $(document).ready(function(){
+            $(".add-row-tenagaahli").click(function(){
+                var data = $(".form-tenagaahli").serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: "aksitenagaahli.php",
+                    data: data,
+                    success: function() {
+                        alert('test');
+                        $('.tampildataahli').load("tampildatatenagaahli.php");
+                    }
+                });
             });
         });
-    });    
-    </script>
+</script> 
 
 
+<script type="text/javascript">
+        
+        $(document).ready(function(){
+            $(".add-row-penyedia").click(function(){
+                var data = $(".form-penyedia").serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: "aksipenyedia.php",
+                    data: data,
+                    success: function() {
+                        alert('test');
+                        $('.tampildatapenyedia').load("tampildatapenyedia.php");
+                    }
+                });
+            });
+        });
+</script>
+
+<script type="text/javascript">
+        
+        $(document).ready(function(){
+            $(".simpan-data").click(function(){
+                var data = $(".form-utama").serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: "prosesinput.php",
+                    data: data,
+                    success: function() {
+                        alert('test');
+                        console.log(data);
+                        
+                    }
+                });
+            });
+        });
+</script>
+
+ 
 
     <!-- <link href="scss/summernote.scss"  rel="stylesheet"> -->
    <!--  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
@@ -265,15 +268,15 @@ include 'koneksi.php'
                             <b class="logo-icon">
                                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                                 <!-- Light Logo icon -->
-                                <img src="../assets/images/logodps.jpg" alt="homepage" class="light-logo" />
+                                <img style="width:100px;" src="assets/images/logodps.jpg" alt="homepage" class="light-logo" />
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
                             <span class="logo-text">
                                 <!-- dark Logo text -->
-                                <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                                <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo text -->
-                                <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                                <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
                             </span>
                         </a>
                     </div>
@@ -459,7 +462,8 @@ include 'koneksi.php'
                             <div class="card-body">
                                 <a href="databarang.php" class="btn btn-primary"> Kembali </a><br><br><br>
                                 <h3 class="text-center">FORM IDENTIFIKASI KEBUTUHAN BARANG</h3><br><br>  
-                                <form method="post" >
+                                
+                                <form method="post" class="form-utama" > 
                                     <input type="hidden" name="id_kebutuhan">
                                     <div class="row">
                                         <div class="col">
@@ -561,7 +565,7 @@ include 'koneksi.php'
                                             <div class="form-group row">
                                                 <label class="col-sm-4 col-form-label">Kriteria Indikator Kinerja</label>
                                                 <div class="col-sm-8">
-                                                     <textarea id="summernote"  rows="10"></textarea>
+                                                <textarea id="summernote" name="textareaindikator" rows="10"></textarea>
                                                 <br/>
                                                 </div>
                                                 <script>
@@ -598,12 +602,12 @@ include 'koneksi.php'
                                             <div class="form-group row">
                                                 <label class="col-sm-4 col-form-label">Barang yang Dibutuhkan</label>
                                                 <div class="col-sm-8">
-                                                    <form method="post" class="form-barang">
-                                                        <input type="text"  name="nama_barang" placeholder="Nama Barang">
-                                                        <input type="text" name="volume" placeholder="Volume">
-                                                        <input type="text" name="satuan" placeholder="Satuan">
-                                                        <input type="text" name="harga" placeholder="Harga">
-                                                        <button type="button" class="add-row"> Add Row</button> 
+                                                  <form method="post" class="form-barang">
+                                                        <input type="text"  name="nama_barang"  placeholder="Nama Barang">
+                                                        <input type="text" name="volume"  placeholder="Volume">
+                                                        <input type="text" name="satuan"  placeholder="Satuan">
+                                                        <input type="text" name="harga"  placeholder="Harga">
+                                                        <button type="button" class="add-row-barang"> Add Row</button> 
                                                     </form>
 
                                                     <div class="tampildata"></div>
@@ -659,7 +663,7 @@ include 'koneksi.php'
                                             <div class="form-group row">
                                                 <label class="col-sm-4 col-form-label">Prakiraan Biaya</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text"  class="form-control prabiaya" name="perkiraanbiaya " readonly >
+                                                    <input type="text"  class="form-control prabiaya" name="perkiraanbiaya" readonly >
                                                 </div>
                                             </div>
 
@@ -682,7 +686,7 @@ include 'koneksi.php'
                                             <div class="form-group row">
                                                 <label class="col-sm-4 col-form-label">Jumlah Pegawai dalam unit kerja</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" class="form-control" name="jumlah" >
+                                                    <input type="text" class="form-control" name="jumlah">
                                                 </div>
                                             </div>
 
@@ -711,10 +715,7 @@ include 'koneksi.php'
                                             </div>
 
                                                     
-                                           
-                                           
-                                            
-                                            
+
 
                                             <div class="form-group row">
                                                 <label class="col-sm-4 col-form-label">Tingkat Beban dalam tugas dan tanggung jawab pegawai dalam melaksanakan fungsi Tim Pengelola Manajemen PPK</label>
@@ -829,12 +830,12 @@ include 'koneksi.php'
                                                 <label class="col-sm-4 col-form-label"> Nama Penyedia Kebutuhan Barang </label>
                                                 <div class="col-sm-8">
                                                    
-                                                    <div  method="post" class="form-penyedia">
+                                                    <form  method="post" class="form-penyedia">
                                                             <input type="text"  name="nama_penyedia" placeholder="Nama Penyedia">
                                                             <input type="text" name="rantai_pasok" placeholder="Rantai Pasok">
                                                        
                                                             <button type="button" class="add-row-penyedia"> Add Row</button> 
-                                                    </div>
+                                                    </form>
 
                                                      <div class="tampildatapenyedia"> </div>
                                                     <button type="button" class="delete-row">Delete Row</button> <br><br>
@@ -910,7 +911,7 @@ include 'koneksi.php'
                                                         <label class="form-check-label" > &nbsp; &nbsp; Manual </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radio_jumlah"  value="Otomatis">
+                                                        <input class="form-check-input" type="radio" name="radio_cara"  value="Otomatis">
                                                         <label class="form-check-label" > &nbsp; &nbsp; Otomatis </label>
                                                     </div>
                                                 </div>
@@ -990,7 +991,7 @@ include 'koneksi.php'
                                         </div></div>
 
                                         <div>
-                                            <button type="submit" class="btn-primary"> SIMPAN DATA </button>
+                                            <button type="button" class="btn-primary simpan-data"> SIMPAN DATA </button>
                                         </div>
                                          
                                 </form>
@@ -1028,28 +1029,28 @@ include 'koneksi.php'
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- apps -->
-    <script src="../dist/js/app-style-switcher.js"></script>
-    <script src="../dist/js/feather.min.js"></script>
+    <script src="dist/js/app-style-switcher.js"></script>
+    <script src="dist/js/feather.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
     <!--Menu sidebar -->
-    <script src="../dist/js/sidebarmenu.js"></script>
+    <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="../dist/js/custom.min.js"></script>
+    <script src="dist/js/custom.min.js"></script>
     <!--This page JavaScript -->
     <!--chartis chart-->
-    <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <!--c3 charts -->
-    <script src="../assets/extra-libs/c3/d3.min.js"></script>
-    <script src="../assets/extra-libs/c3/c3.min.js"></script>
+    <script src="assets/extra-libs/c3/d3.min.js"></script>
+    <script src="assets/extra-libs/c3/c3.min.js"></script>
     <!--chartjs -->
-    <script src="../assets/libs/chart.js/dist/Chart.min.js"></script>
-    <script src="../dist/js/pages/dashboards/dashboard1.js"></script>
+    <script src="assets/libs/chart.js/dist/Chart.min.js"></script>
+    <script src="dist/js/pages/dashboards/dashboard1.js"></script>
 
 
     <script type="text/javascript">

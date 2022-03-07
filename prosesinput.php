@@ -4,7 +4,7 @@ include 'koneksi.php';
 
 $id_kebutuhan =$_POST['id_kebutuhan']; //1
 $perubahan = $_POST['perubahan']; //2
-$tanggal = $_POST['alamat'];//3
+$tanggal = $_POST['tanggal'];//3
 $namakld = $_POST['namakld']; //4
 $satker =  $_POST['satker']; //5
 $ppk = $_POST['ppk']; //6
@@ -20,7 +20,7 @@ $namabmn = $_POST['namabmn']; //12
 
 //identifikasi Kebutuhan Barang
 $namabarang = $_POST['namabarang']; //13
-$spesifikasi = $_POST['spesifikasi']; //summernote //14
+$spesifikasi = $_POST['textareaindikator']; //summernote //14
 $kegunaan = $_POST['kegunaan']; //15
 $kapasitas = $_POST['kapasitas']; //16
 $garansi = $_POST['garansi']; //17
@@ -28,20 +28,22 @@ $garansi = $_POST['garansi']; //17
 $tglpemakaian = $_POST['tglpemakaian']; //18
 $pengelola = $_POST['pengelola']; //19
 $estimasiwaktu = $_POST['estimasiwaktu']; //20
-$adalkpp = $_POST['adalkpp']; //radio button //21
+$adalkpp = $_POST['radio_lkpp']; //radio button //21
 $prioritas = $_POST['prioritas']; //dropdown //22
 $perkiraanbiaya = $_POST['perkiraanbiaya']; //23
 
 
 //identifikasi manajemen penunjang tugas dan fungsi PPK
 $jumlah = $_POST['jumlah']; //jumlah pegawai //24
-$tenagaahli = $_POST['tenagaahli']; //radio button //25
+// $tenagaahli = $_POST['tenagaahli']; //radio button //25
 //tabel tenaga ahli
+$radio_ppk=$_POST['radio_ppk'];
 $tingkatbeban= $_POST['tingkatbeban']; //26
-$jumlahbrg = $_POST['jumlahbrg'];  //27
-$memenuhikebutuhan = $_POST['memenuhikebutuhan']; //radio button //28
+$radio_jumlah=$_POST['radio_jumlah'];
+//$jumlahbrg = $_POST['jumlahbrg'];  //27
+//$memenuhikebutuhan = $_POST['memenuhikebutuhan']; //radio button //28
 
-
+return var_dump($jumlah);
 //barang yang telah tersedia/dimiliki/dikuasai
 $jumlahbarang = $_POST['jumlahbarang']; //29
 $layakpakai = $_POST['layakpakai']; //30
@@ -52,11 +54,13 @@ $sumberdana = $_POST['sumberdana']; //34
 
 
 //identifikasi pasokan atau supply barang
-$kemudahan = $_POST['kemudahan']; //radio button //35
+$radio_pasokan = $_POST['radio_pasokan']; //radio button //35
 $produsen = $_POST['produsen']; //36
 //tabel penyedia barang atau supplier
 $kriteriabarang = $_POST['kriteriabarang']; //dropdown //37
-$syaratbarang = $_POST['syaratbarang']; //radio button //38
+$radio_nilai = $_POST['radio_nilai'];
+
+//$syaratbarang = $_POST['syaratbarang']; //radio button //38
 
 
 
@@ -82,14 +86,15 @@ $susunoleh = $_POST['susunoleh']; //50
 $menyetujui = $_POST['menyetujui']; //51
 
 
+ 
+
+
 //Query input menginput data kedalam tabel barang
 
 
-$sql = " INSERT INTO `kebutuhan_barang`(`id_kebutuhan`, `perubahan`, `tanggal`, `namakld`, `satker`, `ppk`, `program`, `kegiatan`, `subkegiatan`, `output`, `kodebmn`, `namabmn`, `namabarang`, `spesifikasi`, `kegunaan`, `kapasitas`, `garansi`, `tglpemakaian`, `pengelola`, `estimasiwaktu`, `adalkpp`, `prioritas`, `perkiraanbiaya`, `jumlah`, `tenagaahli`, `tingkatbeban`, `jumlahbrg`, `memenuhikebutuhan`, `jumlahbarang`, `layakpakai`, `rusakringan`, `rusakberat`, `lokasi`, `sumberdana`, `kemudahan`, `produsen`, `kriteriabarang`, `syaratbarang`, `carakirim`, `carapasang`, `carasimpan`, `carapakai`, `kebutuhanpelatihan`, `pengadaanberkelanjutan`, `pengadaanlain`, `rencanakonsolidasi`, `bilarekomen`, `cttpenting`, `susunpertama`, `susunoleh`, `menyetujui`) VALUES ('$id_kebutuhan','$perubahan','$tanggal','$namakld','$satker','$ppk','$program','$kegiatan','$subkegiatan','$output','$kodebmn','$namabmn','$namabarang','$spesifikasi','$kegunaan','$kapasitas','$garansi','$tglpemakaian','$pengelola','$estimasiwaktu','$adalkpp','$prioritas','$perkiraanbiaya','$jumlah','$tenagaahli','$tingkatbeban','$jumlahbrg','$memenuhikebutuhan','$jumlahbarang','$layakpakai','$rusakringan','$rusakberat','$lokasi','$sumberdana','$kemudahan','$produsen','$kriteriabarang','$syaratbarang','$carakirim','$carapasang','$carasimpan','$carapakai','$kebutuhanpelatihan','$pengadaanberkelanjutan','$pengadaanlain','$rencanakonsolidasi','$bilarekomen','$cttpenting','$susunpertama','$susunoleh','$menyetujui')";
-
-
+$sql = INSERT INTO `kebutuhan_barang` (`id_kebutuhan`, `perubahan`, `tanggal`, `namakld`, `satker`, `ppk`, `program`, `kegiatan`, `subkegiatan`, `output`, `kodebmn`, `namabmn`, `namabarang`, `spesifikasi`, `kegunaan`, `kapasitas`, `garansi`, `tglpemakaian`, `pengelola`, `estimasiwaktu`, `adalkpp`, `prioritas`, `perkiraanbiaya`, `jumlah`, `tenagaahli`, `tingkatbeban`, `jumlahbrg`, `memenuhikebutuhan`, `jumlahbarang`, `layakpakai`, `rusakringan`, `rusakberat`, `lokasi`, `sumberdana`, `kemudahan`, `produsen`, `kriteriabarang`, `syaratbarang`, `carakirim`, `carapasang`, `carasimpan`, `carapakai`, `kebutuhanpelatihan`, `pengadaanberkelanjutan`, `pengadaanlain`, `rencanakonsolidasi`, `bilarekomen`, `cttpenting`, `susunpertama`, `susunoleh`, `menyetujui`) VALUES (NULL, '$perubahan', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
  
-// $sql= "INSERT INTO kebutuhan_barang (id_kebutuhan, perubahan, tanggal, namakld, satker, ppk, program, kegiatan, subkegiatan, output, kodebmn, namabmn, namabarang, spesifikasi, kegunaan, kapasitas, garansi, tglpemakaian, pengelola, estimasiwaktu, adalkpp, prioritas, perkiraanbiaya, jumlah, tenagaahli, tingkatbeban, jumlahbrg, memenuhikebutuhan, jumlahbarang, layakpakai, rusakringan, rusakberat, lokasi, sumberdana, kemudahan, produsen, kriteriabarang, syaratbarang, carakirim, carapasang, carasimpan, carapakai, kebutuhanpelatihan, pengadaanberkelanjutan, pengadaanlain, rencanakonsolidasi, bilarekomen) VALUES ('$id_kebutuhan', '$perubahan', '$tanggal', '$namakld', '$satker', '$ppk', '$program', '$kegiatan', '$subkegiatan', '$output', '$kodebmn', '$namabmn', '$namabarang', '$spesifikasi', '$kegunaan', '$kapasitas', '$garansi', '$tglpemakaian', '$pengelola', '$estimasiwaktu', '$adalkpp', '$prioritas', '$perkiraanbiaya', '$jumlah', '$tenagaahli', '$tingkatbeban', '$jumlahbrg', '$memenuhikebutuhan', '$jumlahbarang', '$layakpakai', '$rusakringan', '$rusakberat', '$lokasi', '$sumberdana', '$kemudahan', '$produsen', '$kriteriabarang', '$syaratbarang', '$carakirim', '$carapasang', '$carasimpan', '$carapakai', '$kebutuhanpelatihan', '$pengadaanberkelanjutan', '$pengadaanlain', '$rencanakonsolidasi', '$bilarekomen')";
+//$sql= "INSERT INTO kebutuhan_barang (id_kebutuhan, perubahan, tanggal, namakld, satker, ppk, program, kegiatan, subkegiatan, output, kodebmn, namabmn, namabarang, spesifikasi, kegunaan, kapasitas, garansi, tglpemakaian, pengelola, estimasiwaktu, adalkpp, prioritas, perkiraanbiaya, jumlah, tenagaahli, tingkatbeban, jumlahbrg, memenuhikebutuhan, jumlahbarang, layakpakai, rusakringan, rusakberat, lokasi, sumberdana, kemudahan, produsen, kriteriabarang, syaratbarang, carakirim, carapasang, carasimpan, carapakai, kebutuhanpelatihan, pengadaanberkelanjutan, pengadaanlain, rencanakonsolidasi, bilarekomen) VALUES ('$id_kebutuhan', '$perubahan', '$tanggal', '$namakld', '$satker', '$ppk', '$program', '$kegiatan', '$subkegiatan', '$output', '$kodebmn', '$namabmn', '$namabarang', '$spesifikasi', '$kegunaan', '$kapasitas', '$garansi', '$tglpemakaian', '$pengelola', '$estimasiwaktu', '$adalkpp', '$prioritas', '$perkiraanbiaya', '$jumlah', '$tenagaahli', '$tingkatbeban', '$jumlahbrg', '$memenuhikebutuhan', '$jumlahbarang', '$layakpakai', '$rusakringan', '$rusakberat', '$lokasi', '$sumberdana', '$kemudahan', '$produsen', '$kriteriabarang', '$syaratbarang', '$carakirim', '$carapasang', '$carasimpan', '$carapakai', '$kebutuhanpelatihan', '$pengadaanberkelanjutan', '$pengadaanlain', '$rencanakonsolidasi', '$bilarekomen')";
 	 
 
 	
